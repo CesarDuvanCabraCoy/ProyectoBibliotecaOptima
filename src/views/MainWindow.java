@@ -1,11 +1,14 @@
 package views;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 
 import controllers.MainController;
+import models.Computer;
 
 public class MainWindow extends JFrame{
 
@@ -13,7 +16,6 @@ public class MainWindow extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPData jpData;
 	private JPMain jpMain;
 	private JTBMain jtbMain;
 	private MainController mainController;
@@ -36,6 +38,14 @@ public class MainWindow extends JFrame{
 		
 		jpMain = new JPMain(mainController);
 		this.add(jpMain, BorderLayout.CENTER);
+	}
+	
+	public void updateBoard(ArrayList<Computer> computers) {
+		jpMain.updateBoard(computers);
+	}
+
+	public int getQuantityPcs() {
+		return jpMain.getQuantityPcs();
 	}
 	
 }

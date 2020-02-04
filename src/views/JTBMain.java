@@ -22,7 +22,8 @@ public class JTBMain extends JToolBar{
 		init();
 	}
 	
-	private void init() { 
+	private void init() {
+		this.addSeparator();
 		addButton(jbStatistics, ConstantsGUI.URL_IMAGE_STATISTICS, JBActions.SHOW_STATISTICS, ConstantsGUI.TT_JB_STATISTICS, true);
 	}
 	

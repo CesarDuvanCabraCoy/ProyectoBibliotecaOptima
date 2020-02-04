@@ -2,6 +2,6 @@ package models;
 
 public enum ComputerState {
 
-	LIBRE, OCUPADO, DAÑADO
+	FREE, OCCUPIED, DAMAGED
 	
 }
