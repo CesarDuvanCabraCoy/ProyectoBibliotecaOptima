@@ -18,7 +18,7 @@ public class JPMain extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JPData jpData;
 	private JPBoard jpBoard;
-	private JScrollBar jScrollBar;
+	private JScrollPane jScrollBar;
 	private MainController mainController;
 	
 	
@@ -37,9 +37,11 @@ public class JPMain extends JPanel{
 		jpBoard = new JPBoard();
 //		this.add(jpBoard, BorderLayout.CENTER);
 		JScrollPane scrollableTextArea = new JScrollPane(jpBoard); 
-		scrollableTextArea.setSize(this.getWidth(), 4000);
-		scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
+		scrollableTextArea.setSize(this.getWidth(), this.getHeight());
+		scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		jpBoard.repaint();
 		this.add(scrollableTextArea);
+		repaint();
 	}
 
 	public void updateBoard(ArrayList<Computer> computers) {
