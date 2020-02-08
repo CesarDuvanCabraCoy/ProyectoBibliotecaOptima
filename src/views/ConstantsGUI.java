@@ -7,7 +7,7 @@ public class ConstantsGUI {
 	public static final int COLUMNS_NUMBER = 12;
 	public static final String JL_INFO_MODIFY_DATA = "Datos variables";
 	public static final String TYPE_LETTER = "Times New Roman";
-	public static final String JL_INFO_DAYS = "Dï¿½as: ";
+	public static final String JL_INFO_DAYS = "Días: ";
 	public static final String JL_INFO_PCS = "PC's: ";
 	public static final String JL_INFO_SERVICE_TIME = "Tiempo de servicio:";
 	public static final String JB_STATISTICS = "EstadÃ­sticas";

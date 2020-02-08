@@ -2,6 +2,7 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
@@ -35,18 +36,12 @@ public class JPMain extends JPanel{
 		this.add(jpData, BorderLayout.NORTH);
 		
 		jpBoard = new JPBoard();
-//		this.add(jpBoard, BorderLayout.CENTER);
-		JScrollPane scrollableTextArea = new JScrollPane(jpBoard); 
-		scrollableTextArea.setSize(this.getWidth(), this.getHeight());
-		scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		jpBoard.repaint();
-		this.add(scrollableTextArea);
-		repaint();
+		this.add(jpBoard, BorderLayout.CENTER);
 	}
 
 	public void updateBoard(ArrayList<Computer> computers) {
 		jpBoard.updateBoard(computers);
-		this.revalidate();
+		this.repaint();
 	}
 
 	public int getQuantityPcs() {

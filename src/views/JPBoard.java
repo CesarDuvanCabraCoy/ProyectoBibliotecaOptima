@@ -1,15 +1,16 @@
 package views;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-
 import models.Computer;
+import utils.Utils;
 
 public class JPBoard extends JPanel{
 
@@ -18,18 +19,19 @@ public class JPBoard extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Computer> computers;
+	private int size = 0;
+	private GridBagConstraints gbc;
 
 	public JPBoard() {
 		computers = new ArrayList<Computer>();
 		this.setBackground(Color.WHITE);
+		gbc = new GridBagConstraints();
 	}
 	
 	public void updateBoard(ArrayList<Computer> computers) {
 		this.computers = computers;
 		this.repaint();
 	}
-	
-	
 	
 	private void drawComputer(Computer com, int x, int y, Graphics g) {
 		g.drawImage(new ImageIcon(getClass().getResource(ConstantsGUI.URL_PC)).getImage(), x, y, this);
@@ -65,11 +67,8 @@ public class JPBoard extends JPanel{
 			}else {
 				y+=100;
 				x = 20;
-
+				size++;
 			}
-//			if (i == 15 || i == 31 || i == 47 || i == 63 || i == 79 || i == 95 ||) {
-//				
-//			}
 		}
 	}
 
@@ -77,6 +76,7 @@ public class JPBoard extends JPanel{
 	public void paint(Graphics g) {
 		super.paint(g);
 		paintBoard(g);
+		Utils.generateBasicGrid(this, size, gbc);
 	}
 	
 }

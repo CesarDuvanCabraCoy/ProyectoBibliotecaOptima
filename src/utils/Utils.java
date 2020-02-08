@@ -14,4 +14,12 @@ public class Utils {
 		}
 	}
 	
+	public static void generateBasicLabelsPCs(Container comp, int quantityRows, GridBagConstraints gbc) {
+		gbc.weighty = 1;
+		for (int i = 0; i < quantityRows; i++) {
+			gbc.gridy = i;
+			comp.add(new JLabel(""), gbc);
+		}
+	}
+	
 }

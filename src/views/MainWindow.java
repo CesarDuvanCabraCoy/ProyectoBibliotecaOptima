@@ -1,6 +1,7 @@
 package views;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -28,6 +29,7 @@ public class MainWindow extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
+		this.setMinimumSize(new Dimension(700, 900));
 		init();
 		this.setVisible(true);
 	}
@@ -37,11 +39,15 @@ public class MainWindow extends JFrame{
 		this.add(jtbMain, BorderLayout.NORTH);
 		
 		jpMain = new JPMain(mainController);
-		this.add(jpMain, BorderLayout.CENTER);
+		JScrollPane scrollableTextArea = new JScrollPane(jpMain); 
+		scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		this.add(scrollableTextArea);
 	}
 	
 	public void updateBoard(ArrayList<Computer> computers) {
 		jpMain.updateBoard(computers);
+		this.repaint();
+		this.revalidate();
 	}
 
 	public int getQuantityPcs() {
