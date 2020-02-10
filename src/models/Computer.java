@@ -8,11 +8,11 @@ public class Computer {
 	private ComputerState computerState;
 	private long serviceTime;
 	
-	public Computer(int id, int quantityStudents) {
+	public Computer(int id, int quantityStudents,ComputerState computerState) {
 		this.id = id;
 		this.quantityStudents = quantityStudents;
 		this.quantityTimesRequested = 0;
-		this.computerState = ComputerState.FREE;
+		this.computerState = computerState;
 		this.serviceTime = 0;
 	}
 
