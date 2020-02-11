@@ -19,7 +19,6 @@ public class JPMain extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JPData jpData;
 	private JPBoard jpBoard;
-	private JScrollPane jScrollBar;
 	private MainController mainController;
 	
 	
@@ -36,7 +35,10 @@ public class JPMain extends JPanel{
 		this.add(jpData, BorderLayout.NORTH);
 		
 		jpBoard = new JPBoard();
+		JScrollPane jscp = new JScrollPane(jpBoard);
+		jscp.setViewportView(jpBoard);
 		this.add(jpBoard, BorderLayout.CENTER);
+//		this.add(jpBoard, BorderLayout.CENTER);
 	}
 
 	public void updateBoard(ArrayList<Computer> computers) {

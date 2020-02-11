@@ -4,11 +4,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 import models.Computer;
 import utils.Utils;
 
@@ -19,13 +23,11 @@ public class JPBoard extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Computer> computers;
-	private int size = 0;
-	private GridBagConstraints gbc;
 
 	public JPBoard() {
 		computers = new ArrayList<Computer>();
 		this.setBackground(Color.WHITE);
-		gbc = new GridBagConstraints();
+		this.setLayout(new GridLayout(20, 1));
 	}
 	
 	public void updateBoard(ArrayList<Computer> computers) {
@@ -60,6 +62,7 @@ public class JPBoard extends JPanel{
 	private void paintBoard(Graphics g) {
 		int x = 20;
 		int y = 30;
+		int rows = 1;
 		for (int i = 0; i < computers.size(); i++) {
 			drawComputer(computers.get(i), x, y, g);
 			if (x <= (this.getWidth() - 130)) {
@@ -67,7 +70,6 @@ public class JPBoard extends JPanel{
 			}else {
 				y+=100;
 				x = 20;
-				size++;
 			}
 		}
 	}
@@ -76,7 +78,6 @@ public class JPBoard extends JPanel{
 	public void paint(Graphics g) {
 		super.paint(g);
 		paintBoard(g);
-		Utils.generateBasicGrid(this, size, gbc);
 	}
 	
 }

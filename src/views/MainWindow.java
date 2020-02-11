@@ -39,9 +39,7 @@ public class MainWindow extends JFrame{
 		this.add(jtbMain, BorderLayout.NORTH);
 		
 		jpMain = new JPMain(mainController);
-		JScrollPane scrollableTextArea = new JScrollPane(jpMain); 
-		scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		this.add(scrollableTextArea);
+		this.add(jpMain);
 	}
 	
 	public void updateBoard(ArrayList<Computer> computers) {
