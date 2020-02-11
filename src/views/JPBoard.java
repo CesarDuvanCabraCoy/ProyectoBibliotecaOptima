@@ -67,7 +67,8 @@ public class JPBoard extends JPanel{
 			drawComputer(computers.get(i), x, y, g);
 			if (x <= (this.getWidth() - 130)) {
 				x+=120;				
-			}else {
+			}
+			else{
 				y+=100;
 				x = 20;
 			}
