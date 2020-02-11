@@ -44,13 +44,13 @@ public class MainController implements ActionListener, ChangeListener{
 	public void stateChanged(ChangeEvent e) {
 		switch (JSActions.valueOf(((JSlider)(e.getSource())).getName())) {
 		case HOUR:
-			System.out.println("Modificación de hora");
+			System.out.println("Modificacion de hora");
 			break;
 		case PCS:
-			System.out.println("Modificación de pcs");
+			System.out.println("Modificacion de pcs");
 			break;
 		case SERVICE_TIME:
-			System.out.println("Modificación de service");
+			System.out.println("Modificacion de service");
 			break;
 		default:
 			break;

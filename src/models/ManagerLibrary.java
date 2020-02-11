@@ -12,19 +12,14 @@ public class ManagerLibrary {
 	
 	public void playSimulation(int numberPCs) {
 		computers.clear();
-		//generateComputers(numberPCs);
-		//paintPCs();
-		//simulationComputers(numberPCs);
+		generateComputers(numberPCs);
 		similationDo(numberPCs);
 	}
 	public void similationDo(int numberPCs) {
 		for (int i = 0; i < 20; i++) {
-			generateComputers(numberPCs);
-
-			computers.clear();
-			paintPCs();
+						//computers.clear();
 			simulationComputers(numberPCs);
-			System.out.println(i);
+			//System.out.println(i);
 		
 			
 		}
@@ -33,18 +28,22 @@ public class ManagerLibrary {
 	
 	private void generateComputers(int numberPCs) {
 		for (int i = 0; i < numberPCs; i++) {
-			computers.add(new Computer(i, defineQuantityStudents(),ComputerState.FREE));
+			computers.add(new Computer(i, defineQuantityStudents(),defineStateInit()));
 		}
 	}
 	private void simulationComputers(int numberPCs) {
 		for (int i = 0; i < numberPCs; i++) {
-			computers.add(new Computer(i, defineQuantityStudents(),defineState()));
+			Computer computer= computers.get(i);
+			computer.setComputerState(defineState());
+			
 		}
+		System.out.println("******************Inicio de cambio de estdos");
+		paintPCs();
 	}
 	
 	public void paintPCs() {
 		for (Computer computer : computers) {
-			System.out.println(computer.getId() + " - " + computer.getQuantityStudents());
+			System.out.println(computer.getId() + " - " + computer.getQuantityStudents()+"- "+ computer.getComputerState());
 		}
 	}
 	private ComputerState defineState() {
@@ -63,7 +62,20 @@ public class ManagerLibrary {
 		return state;
 		
 	}
-	
+	private ComputerState defineStateInit() {
+		int ran = (int) (Math.random() * 100);
+		System.out.println();
+		ComputerState state = null;
+		if (ran <= 90) {
+			state =ComputerState.FREE;
+		}
+		
+		if (ran > 90){
+			state= ComputerState.DAMAGED;
+		}
+		return state;
+		
+	}
 	
 	private byte defineQuantityStudents() {
 		int ran = (int) (Math.random() * 10);
