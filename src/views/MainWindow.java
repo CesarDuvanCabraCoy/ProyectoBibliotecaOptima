@@ -68,5 +68,13 @@ public class MainWindow extends JFrame{
 		jpMain.disableButtonInitSim();
 		
 	}
+
+	public int getMaxTimeService() {
+		return jpMain.getMaxTimeService();
+	}
+	
+	public void setValueCurrentDay(int currentDay) {
+		jpMain.setValueCurrentDay(currentDay);
+	}
 	
 }

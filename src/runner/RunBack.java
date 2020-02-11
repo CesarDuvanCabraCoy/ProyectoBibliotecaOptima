@@ -7,6 +7,6 @@ public class RunBack {
 
 	public static void main(String[] args) {
 		ManagerLibrary library= new ManagerLibrary();
-		library.playSimulation(120);
+		library.playSimulation(0, 0);
 	}
 }

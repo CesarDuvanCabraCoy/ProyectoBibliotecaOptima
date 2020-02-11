@@ -2,40 +2,36 @@ package models;
 
 import java.util.ArrayList;
 
-public class ManagerLibrary {
+public class ManagerLibrary extends MyThread{
 
 	private ArrayList<Computer> computers;
+	private ArrayList<Student> queueStudents;
+	private ArrayList<Student> currentStudents;
+	private ArrayList<Student> allStudents;
+	private int maxTimeConsumption;
+
 	
 	public ManagerLibrary() {
+		super(10);
 		computers = new ArrayList<Computer>();
+		queueStudents = new ArrayList<Student>();
+		currentStudents = new ArrayList<Student>();
+		allStudents = new ArrayList<Student>();
 	}
 	
-	public void playSimulation(int numberPCs) {
+	public void playSimulation(int numberPCs, int maxTimeConsumption) {
+		
 		computers.clear();
 		generateComputers(numberPCs);
-		similationDo(numberPCs);
+//		similationDo(numberPCs);
+		this.maxTimeConsumption = maxTimeConsumption;
 	}
 	public void similationDo(int numberPCs) {
-		for (int i = 0; i < 20; i++) {
-						//computers.clear();
-			simulationComputers(numberPCs);
-			//System.out.println(i);
 		
-			
-		}
-		
+		this.start();
+		simulationComputers(numberPCs);
 	}
-//	public void similationDo(int numberPCs) {
-//		for (int i = 0; i < 20; i++) {
-//			generateComputers(numberPCs);
-//			computers.clear();
-////			paintPCs();
-////			simulationComputers(numberPCs);
-//		
-//			
-//		}
-//		
-//	}
+
 	
 	private void generateComputers(int numberPCs) {
 		for (int i = 0; i < numberPCs; i++) {
@@ -48,7 +44,7 @@ public class ManagerLibrary {
 			computer.setComputerState(defineState());
 			
 		}
-		System.out.println("******************Inicio de cambio de estdos");
+		System.out.println("****************** Cambio de estados");
 		paintPCs();
 	}
 	
@@ -98,5 +94,41 @@ public class ManagerLibrary {
 	
 	public ArrayList<Computer> getComputers() {
 		return computers;
+	}
+	
+	private int defineTimeConsumptionForStudent() {
+		return (int)(Math.random() * maxTimeConsumption)+20;
+	}
+
+	public void generateStudents() {
+		Student st = new Student(allStudents.size(), defineTimeConsumptionForStudent());
+		allStudents.add(st);
+		queueStudents.add(st);
+		System.out.println("Se agrego un estudiante: " + st.getId());
+	}
+	
+	public void occupyPC() {
+		if (!queueStudents.isEmpty()) {
+			Student st = queueStudents.get(0);
+			Computer com = choosePcFree();
+			if (com != null) {
+				com.setCurrentStudent(st);
+				queueStudents.remove(0);
+			}
+		}
+	}
+	
+	private Computer choosePcFree() {
+		for (Computer computer : computers) {
+			if (computer.getComputerState() == ComputerState.FREE) {
+				return computer;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	void executeTask() {
+		occupyPC();
 	}
 }
