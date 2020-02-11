@@ -25,6 +25,17 @@ public class ManagerLibrary {
 		}
 		
 	}
+//	public void similationDo(int numberPCs) {
+//		for (int i = 0; i < 20; i++) {
+//			generateComputers(numberPCs);
+//			computers.clear();
+////			paintPCs();
+////			simulationComputers(numberPCs);
+//		
+//			
+//		}
+//		
+//	}
 	
 	private void generateComputers(int numberPCs) {
 		for (int i = 0; i < numberPCs; i++) {

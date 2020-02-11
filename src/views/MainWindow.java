@@ -39,9 +39,7 @@ public class MainWindow extends JFrame{
 		this.add(jtbMain, BorderLayout.NORTH);
 		
 		jpMain = new JPMain(mainController);
-		JScrollPane scrollableTextArea = new JScrollPane(jpMain); 
-		scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		this.add(scrollableTextArea);
+		this.add(jpMain);
 	}
 	
 	public void updateBoard(ArrayList<Computer> computers) {
@@ -52,6 +50,23 @@ public class MainWindow extends JFrame{
 
 	public int getQuantityPcs() {
 		return jpMain.getQuantityPcs();
+	}
+	
+	public void setValueDays() {
+		jpMain.setValueDays();
+	}
+
+	public void setValuePCs() {
+		jpMain.setValuePCs();		
+	}
+
+	public void setValueServiceTime() {
+		jpMain.setValueServiceTime();			
+	}
+
+	public void disableButtonInitSim() {
+		jpMain.disableButtonInitSim();
+		
 	}
 	
 }
