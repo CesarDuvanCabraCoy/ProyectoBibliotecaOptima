@@ -50,4 +50,21 @@ public class JPMain extends JPanel{
 		return jpData.getDataPCs();
 	}
 	
+	public void setValueDays() {
+		jpData.setValueDays();
+	}
+
+	public void setValuePCs() {
+		jpData.setValuePCs();
+	}
+
+	public void setValueServiceTime() {
+		jpData.setValueServiceTime();		
+	}
+
+	public void disableButtonInitSim() {
+		jpData.disableButtonInitSim();
+		
+	}
+	
 }

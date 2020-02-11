@@ -38,19 +38,23 @@ public class MainController implements ActionListener, ChangeListener{
 		int pcs = mainWindow.getQuantityPcs();
 		managerLibrary.playSimulation(pcs);
 		mainWindow.updateBoard(managerLibrary.getComputers());
+		mainWindow.disableButtonInitSim();
 	}
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		switch (JSActions.valueOf(((JSlider)(e.getSource())).getName())) {
-		case HOUR:
+		case DAYS:
 			System.out.println("Modificación de hora");
+			mainWindow.setValueDays();
 			break;
 		case PCS:
 			System.out.println("Modificación de pcs");
+			mainWindow.setValuePCs();
 			break;
 		case SERVICE_TIME:
 			System.out.println("Modificación de service");
+			mainWindow.setValueServiceTime();
 			break;
 		default:
 			break;

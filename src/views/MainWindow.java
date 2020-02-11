@@ -52,4 +52,21 @@ public class MainWindow extends JFrame{
 		return jpMain.getQuantityPcs();
 	}
 	
+	public void setValueDays() {
+		jpMain.setValueDays();
+	}
+
+	public void setValuePCs() {
+		jpMain.setValuePCs();		
+	}
+
+	public void setValueServiceTime() {
+		jpMain.setValueServiceTime();			
+	}
+
+	public void disableButtonInitSim() {
+		jpMain.disableButtonInitSim();
+		
+	}
+	
 }

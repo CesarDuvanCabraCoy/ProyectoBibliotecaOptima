@@ -71,7 +71,15 @@ public class JPData extends JPanel{
 		gbc.gridy = 1;
 		gbc.gridheight = 1;
 		gbc.gridwidth = 5;
-		createSlider(jsDays, JSActions.HOUR.toString(),8, 21, 10, 1, 5, gbc);
+		createSlider(jsDays, JSActions.DAYS.toString(),8, 21, 10, 1, 5, gbc);
+		
+		jlValDays = new JLabel(ConstantsGUI.JL_EQUALS + jsDays.getValue());
+		jlValDays.setFont(new Font(ConstantsGUI.TYPE_LETTER, Font.BOLD, 25));
+		gbc.gridx = 7;
+		gbc.gridy = 1;
+		gbc.gridheight = 1;
+		gbc.gridwidth = 1;
+		this.add(jlValDays, gbc);
 		
 		jlPCs = new JLabel(ConstantsGUI.JL_INFO_PCS);
 		jlPCs.setFont(new Font(ConstantsGUI.TYPE_LETTER, Font.BOLD, 20));
@@ -81,13 +89,20 @@ public class JPData extends JPanel{
 		gbc.gridwidth = 1;
 		this.add(jlPCs, gbc);
 		
-		
 		jsPCs = new JSlider();
 		gbc.gridx = 2;
 		gbc.gridy = 2;
 		gbc.gridheight = 1;
 		gbc.gridwidth = 5;
 		createSlider(jsPCs, JSActions.PCS.toString(),90, 180, 140, 10, 10, gbc);
+		
+		jlValPCs = new JLabel(ConstantsGUI.JL_EQUALS + jsPCs.getValue());
+		jlValPCs.setFont(new Font(ConstantsGUI.TYPE_LETTER, Font.BOLD, 25));
+		gbc.gridx = 7;
+		gbc.gridy = 2;
+		gbc.gridheight = 1;
+		gbc.gridwidth = 1;
+		this.add(jlValPCs, gbc);
 		
 		jlServiceTime = new JLabel(ConstantsGUI.JL_INFO_SERVICE_TIME);
 		jlServiceTime.setFont(new Font(ConstantsGUI.TYPE_LETTER, Font.BOLD, 20));
@@ -103,6 +118,14 @@ public class JPData extends JPanel{
 		gbc.gridheight = 1;
 		gbc.gridwidth = 5;
 		createSlider(jsServiceTime, JSActions.SERVICE_TIME.toString(),40, 180, 120, 10, 10, gbc);
+		
+		jlValServiceTime = new JLabel(ConstantsGUI.JL_EQUALS + jsServiceTime.getValue());
+		jlValServiceTime.setFont(new Font(ConstantsGUI.TYPE_LETTER, Font.BOLD, 25));
+		gbc.gridx = 7;
+		gbc.gridy = 3;
+		gbc.gridheight = 1;
+		gbc.gridwidth = 1;
+		this.add(jlValServiceTime, gbc);
 		
 		jbStartSimulation = new JButton(ConstantsGUI.JB_START_SIMULATION);
 		jbStartSimulation.setFont(new Font(ConstantsGUI.TYPE_LETTER, Font.BOLD, 20));
@@ -145,5 +168,23 @@ public class JPData extends JPanel{
 	public int getDataServiceTime() {
 		return jsServiceTime.getValue();
 	}
+	
+	public void setValueDays() {
+		jlValDays.setText(ConstantsGUI.JL_EQUALS + jsDays.getValue());
+	}
+
+	public void setValuePCs() {
+		jlValPCs.setText(ConstantsGUI.JL_EQUALS + jsPCs.getValue());
+	}
+
+	public void setValueServiceTime() {
+		jlValServiceTime.setText(ConstantsGUI.JL_EQUALS + jsServiceTime.getValue());
+	}
+
+	public void disableButtonInitSim() {
+		this.jbStartSimulation.setEnabled(false);	
+	}
+	
+	
 	
 }

@@ -12,24 +12,22 @@ public class ManagerLibrary {
 	
 	public void playSimulation(int numberPCs) {
 		computers.clear();
-		//generateComputers(numberPCs);
+		generateComputers(numberPCs);
 		//paintPCs();
 		//simulationComputers(numberPCs);
-		similationDo(numberPCs);
+//		similationDo(numberPCs);
 	}
-	public void similationDo(int numberPCs) {
-		for (int i = 0; i < 20; i++) {
-			generateComputers(numberPCs);
-
-			computers.clear();
-			paintPCs();
-			simulationComputers(numberPCs);
-			System.out.println(i);
-		
-			
-		}
-		
-	}
+//	public void similationDo(int numberPCs) {
+//		for (int i = 0; i < 20; i++) {
+//			generateComputers(numberPCs);
+//			computers.clear();
+////			paintPCs();
+////			simulationComputers(numberPCs);
+//		
+//			
+//		}
+//		
+//	}
 	
 	private void generateComputers(int numberPCs) {
 		for (int i = 0; i < numberPCs; i++) {
