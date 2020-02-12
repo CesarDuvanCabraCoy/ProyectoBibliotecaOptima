@@ -138,11 +138,12 @@ public class ManagerLibrary extends MyThread{
 		for (Computer com : computers) {
 			com.setComputerState(defineStateInit());
 		}
+		
 		numberCurrentDay++;
 	}
 
 	public int defineNumberOfStudents() {
-		return (int)(Math.random()*220)+200;
+		return (int)(Math.random()*450)+20;
 	}
 	
 	@Override

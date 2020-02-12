@@ -10,18 +10,21 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import models.ManagerLibrary;
+import views.JBoardStadisticas;
 import views.MainWindow;
 
 public class MainController implements ActionListener, ChangeListener{
 
 	private MainWindow mainWindow;
 	private ManagerLibrary managerLibrary;
+	private JBoardStadisticas boardStadisticas;
 	private Timer timerStudents;
 	private boolean playing;
 	
 	public MainController() {
 		managerLibrary = new ManagerLibrary();
 		this.mainWindow = new MainWindow(this);
+		boardStadisticas = new JBoardStadisticas();
 		mainWindow.setVisible(true);
 	}
 	
@@ -67,11 +70,20 @@ public class MainController implements ActionListener, ChangeListener{
 	}
 	
 	private void validateNumberDays() {
+		int students= 0;
 		if (managerLibrary.getNumberCurrentDay() == managerLibrary.getNumberOfDays()) {
 			playing = false;
 			managerLibrary.stop();
+			students=managerLibrary.getAllStudents().size()/managerLibrary.getNumberOfDays();
+			boardStadisticas.paintStadistics(students, 121, 12, 12);
 		}else {
 			managerLibrary.initNewDay();
+			//boardStadisticas.paintStadistics(students, 121, 12, 12);
+			
+
+			
+			
+			
 		}
 	}
 	
