@@ -1,5 +1,10 @@
 package models;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
+
 public class Computer {
 
 	private int id;
@@ -55,6 +60,48 @@ public class Computer {
 
 	public void setServiceTime(long serviceTime) {
 		this.serviceTime = serviceTime;
+	}
+	
+
+	public Student getCurrentStudent() {
+		return currentStudent;
+	}
+
+	public void setCurrentStudent(Student currentStudent) {
+		this.currentStudent = currentStudent;
+		this.computerState=ComputerState.OCCUPIED;
+		quantityTimesRequested++;
+		serviceTime+=currentStudent.getConsumptionTime();
+		occupy();
+	}
+	
+	private void occupy() {
+		Timer timer = new Timer(500 * currentStudent.getConsumptionTime(), new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				unSetStudent();
+			}
+		});
+		timer.start();
+	}
+
+	public void unSetStudent() {
+		this.currentStudent = null;
+		this.computerState=defineState();
+	}
+	
+	private ComputerState defineState() {
+		int ran = (int) (Math.random() * 100);
+		System.out.println();
+		ComputerState state = null;
+		if (ran <= 90) {
+			state =ComputerState.FREE;
+		}
+		if (ran > 90){
+			state= ComputerState.DAMAGED;
+		}
+		return state;
+		
 	}
 
 	@Override

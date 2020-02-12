@@ -66,5 +66,13 @@ public class JPMain extends JPanel{
 		jpData.disableButtonInitSim();
 		
 	}
+
+	public int getMaxTimeService() {
+		return jpData.getDataServiceTime();
+	}
+	
+	public void setValueCurrentDay(int currentDay) {
+		jpData.setValueCurrentDay(currentDay);
+	}
 	
 }
