@@ -7,6 +7,7 @@ public class Computer {
 	private int quantityTimesRequested;
 	private ComputerState computerState;
 	private long serviceTime;
+	private Student currentStudent;
 	
 	public Computer(int id, int quantityStudents,ComputerState computerState) {
 		this.id = id;
