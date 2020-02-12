@@ -41,7 +41,8 @@ public class MainController implements ActionListener, ChangeListener{
 	private void playSimulation() {
 		int pcs = mainWindow.getQuantityPcs();
 		int maxTimeService = mainWindow.getMaxTimeService();
-		managerLibrary.playSimulation(pcs, maxTimeService);
+		int numberOfDays = mainWindow.getNumberOfDays();
+		managerLibrary.playSimulation(pcs, maxTimeService, numberOfDays);
 		mainWindow.updateBoard(managerLibrary.getComputers());
 		mainWindow.disableButtonInitSim();
 		playing = true;
@@ -69,12 +70,19 @@ public class MainController implements ActionListener, ChangeListener{
 	}
 	
 	private void generateStudents() {
-		//TO DO Cambiar los valores del random
-		timerStudents = new Timer(((int)(Math.random() * 600) + 10), new ActionListener() {
+		timerStudents = new Timer(((int)(Math.random() * 700) + 10), new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (playing) {
 					managerLibrary.generateStudents();
+					if (managerLibrary.getCurrentDayStudents().size() >= managerLibrary.getNumberMaxStudentsByDay()) {
+						try {
+							managerLibrary.initNewDay();
+							Thread.sleep(2000);
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+					}
 				}
 			}
 		});

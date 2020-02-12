@@ -75,4 +75,8 @@ public class JPMain extends JPanel{
 		jpData.setValueCurrentDay(currentDay);
 	}
 	
+	public int getNumberOfDays() {
+		return jpData.getDataDays();
+	}
+	
 }

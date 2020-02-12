@@ -77,4 +77,7 @@ public class MainWindow extends JFrame{
 		jpMain.setValueCurrentDay(currentDay);
 	}
 	
+	public int getNumberOfDays() {
+		return jpMain.getNumberOfDays();
+	}
 }

@@ -6,25 +6,26 @@ public class ManagerLibrary extends MyThread{
 
 	private ArrayList<Computer> computers;
 	private ArrayList<Student> queueStudents;
-	private ArrayList<Student> currentStudents;
+	private ArrayList<Student> currentDayStudents;
 	private ArrayList<Student> allStudents;
 	private int maxTimeConsumption;
-
+	private int numberOfDays;
+	private int numberMaxStudentsByDay;
 	
 	public ManagerLibrary() {
 		super(10);
 		computers = new ArrayList<Computer>();
 		queueStudents = new ArrayList<Student>();
-		currentStudents = new ArrayList<Student>();
+		currentDayStudents = new ArrayList<Student>();
 		allStudents = new ArrayList<Student>();
 	}
 	
-	public void playSimulation(int numberPCs, int maxTimeConsumption) {
-		
+	public void playSimulation(int numberPCs, int maxTimeConsumption, int numberOfDays) {
 		computers.clear();
 		generateComputers(numberPCs);
 //		similationDo(numberPCs);
 		this.maxTimeConsumption = maxTimeConsumption;
+		this.numberOfDays = numberOfDays;
 	}
 	public void similationDo(int numberPCs) {
 		
@@ -104,6 +105,7 @@ public class ManagerLibrary extends MyThread{
 		Student st = new Student(allStudents.size(), defineTimeConsumptionForStudent());
 		allStudents.add(st);
 		queueStudents.add(st);
+		currentDayStudents.add(st);
 		System.out.println("Se agrego un estudiante: " + st.getId());
 	}
 	
@@ -126,9 +128,46 @@ public class ManagerLibrary extends MyThread{
 		}
 		return null;
 	}
+	
+	public void initNewDay() {
+		this.numberMaxStudentsByDay = defineNumberOfStudents();
+		currentDayStudents.clear();
+		queueStudents.clear();
+		for (Computer com : computers) {
+			com.setComputerState(defineStateInit());
+		}
+	}
 
+	public int defineNumberOfStudents() {
+		return (int)(Math.random()*420)+300; 
+	}
+	
 	@Override
 	void executeTask() {
 		occupyPC();
+	}
+
+	public ArrayList<Student> getCurrentDayStudents() {
+		return currentDayStudents;
+	}
+
+	public void setCurrentDayStudents(ArrayList<Student> currentDayStudents) {
+		this.currentDayStudents = currentDayStudents;
+	}
+
+	public int getNumberOfDays() {
+		return numberOfDays;
+	}
+
+	public void setNumberOfDays(int numberOfDays) {
+		this.numberOfDays = numberOfDays;
+	}
+
+	public int getNumberMaxStudentsByDay() {
+		return numberMaxStudentsByDay;
+	}
+
+	public void setNumberMaxStudentsByDay(int numberMaxStudentsByDay) {
+		this.numberMaxStudentsByDay = numberMaxStudentsByDay;
 	}
 }

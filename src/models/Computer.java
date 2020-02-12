@@ -76,7 +76,7 @@ public class Computer {
 	}
 	
 	private void occupy() {
-		Timer timer = new Timer(500 * currentStudent.getConsumptionTime(), new ActionListener() {
+		Timer timer = new Timer(600 * currentStudent.getConsumptionTime(), new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				unSetStudent();
