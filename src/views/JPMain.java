@@ -2,12 +2,9 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-
 import controllers.MainController;
 import models.Computer;
 
@@ -77,6 +74,10 @@ public class JPMain extends JPanel{
 	
 	public int getNumberOfDays() {
 		return jpData.getDataDays();
+	}
+	
+	public void setValueStudentsAttended(int students) {
+		jpData.setValueStudentsAttended(students);
 	}
 	
 }

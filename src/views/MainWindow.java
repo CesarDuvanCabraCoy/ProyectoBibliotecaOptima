@@ -3,11 +3,8 @@ package views;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-
 import controllers.MainController;
 import models.Computer;
 
@@ -79,5 +76,9 @@ public class MainWindow extends JFrame{
 	
 	public int getNumberOfDays() {
 		return jpMain.getNumberOfDays();
+	}
+	
+	public void setValueStudentsAttended(int students) {
+		jpMain.setValueStudentsAttended(students);
 	}
 }

@@ -35,7 +35,6 @@ public class MainController implements ActionListener, ChangeListener{
 		default:
 			break;
 		}
-		
 	}
 
 	private void playSimulation() {
@@ -53,31 +52,38 @@ public class MainController implements ActionListener, ChangeListener{
 	
 	private void paintBoard() {
 		SwingWorker<Void, Void> refreshBoard = new SwingWorker<Void, Void>(){
-
 			@Override
 			protected Void doInBackground() throws Exception {
 				while (playing) {
-					System.out.println("Entra al paint");
 					mainWindow.updateBoard(managerLibrary.getComputers());
-					mainWindow.setValueCurrentDay(1);
+					mainWindow.setValueStudentsAttended(managerLibrary.getAllStudents().size());
+					mainWindow.setValueCurrentDay(managerLibrary.getNumberCurrentDay());
 					Thread.sleep(20);
 				}
 				return null;
-			}
-			
+			}			
 		};
 		refreshBoard.execute();
 	}
 	
+	private void validateNumberDays() {
+		if (managerLibrary.getNumberCurrentDay() == managerLibrary.getNumberOfDays()) {
+			playing = false;
+			managerLibrary.stop();
+		}else {
+			managerLibrary.initNewDay();
+		}
+	}
+	
 	private void generateStudents() {
-		timerStudents = new Timer(((int)(Math.random() * 700) + 10), new ActionListener() {
+		timerStudents = new Timer(((int)(Math.random() * 700) + 70), new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (playing) {
 					managerLibrary.generateStudents();
 					if (managerLibrary.getCurrentDayStudents().size() >= managerLibrary.getNumberMaxStudentsByDay()) {
 						try {
-							managerLibrary.initNewDay();
+							validateNumberDays();
 							Thread.sleep(2000);
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
@@ -107,9 +113,5 @@ public class MainController implements ActionListener, ChangeListener{
 		default:
 			break;
 		}
-		
 	}
-
-	
-	
 }

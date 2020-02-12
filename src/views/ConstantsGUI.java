@@ -17,5 +17,6 @@ public class ConstantsGUI {
 	public static final String TT_JB_STATISTICS = "EstadIsticas";
 	public static final String JB_START_SIMULATION = "Iniciar simulacion";
 	public static final String JL_EQUALS = "= ";
+	public static final String STUDENTS_ATTENDED = "Estudiantes Atendidos (G): ";
 
 }

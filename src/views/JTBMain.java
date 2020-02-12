@@ -3,7 +3,6 @@ package views;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JSpinner;
 import javax.swing.JToolBar;
 import controllers.JBActions;
 import controllers.MainController;

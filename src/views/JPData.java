@@ -5,13 +5,10 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
-
 import controllers.JBActions;
 import controllers.JSActions;
 import controllers.MainController;
@@ -36,7 +33,7 @@ public class JPData extends JPanel{
 	private JButton jbStartSimulation;
 	private MainController mainController;
 	private JLabel jlCurrentDay;
-	
+	private JLabel jlNumberStudentsAttended;
 	
 	public JPData(MainController mainController) {
 		this.mainController = mainController;
@@ -137,7 +134,6 @@ public class JPData extends JPanel{
 		gbc.gridy = 1;
 		gbc.gridheight = 1;
 		gbc.gridwidth = 1;
-		gbc.weightx = 0.3;
 		this.add(jbStartSimulation, gbc);
 		
 		jlCurrentDay = new JLabel();
@@ -145,8 +141,16 @@ public class JPData extends JPanel{
 		gbc.gridx = 10;
 		gbc.gridy = 2;
 		gbc.gridheight = 1;
-		gbc.gridwidth = 1;
+		gbc.gridwidth = 2;
 		this.add(jlCurrentDay, gbc);
+		
+		jlNumberStudentsAttended = new JLabel();
+		jlNumberStudentsAttended.setFont(new Font(ConstantsGUI.TYPE_LETTER, Font.BOLD, 25));
+		gbc.gridx = 10;
+		gbc.gridy = 3;
+		gbc.gridheight = 1;
+		gbc.gridwidth = 4;
+		this.add(jlNumberStudentsAttended, gbc);
 	}
 	
 	private void createSlider(JSlider js, String name, int min, int max, int valueInit, int majorSpacing, int minorSpacing,
@@ -194,5 +198,9 @@ public class JPData extends JPanel{
 	
 	public void setValueCurrentDay(int currentDay) {
 		this.jlCurrentDay.setText("Dia actual: " + currentDay);
+	}
+	
+	public void setValueStudentsAttended(int students) {
+		this.jlNumberStudentsAttended.setText(ConstantsGUI.STUDENTS_ATTENDED + students);
 	}
 }

@@ -2,8 +2,6 @@ package utils;
 
 import java.awt.Container;
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
-
 import javax.swing.JLabel;
 
 public class Utils {

@@ -1,20 +1,12 @@
 package views;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-
 import models.Computer;
-import utils.Utils;
 
 public class JPBoard extends JPanel{
 
@@ -62,7 +54,6 @@ public class JPBoard extends JPanel{
 	private void paintBoard(Graphics g) {
 		int x = 20;
 		int y = 30;
-		int rows = 1;
 		for (int i = 0; i < computers.size(); i++) {
 			drawComputer(computers.get(i), x, y, g);
 			if (x <= (this.getWidth() - 130)) {

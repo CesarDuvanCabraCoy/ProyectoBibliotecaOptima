@@ -11,6 +11,7 @@ public class ManagerLibrary extends MyThread{
 	private int maxTimeConsumption;
 	private int numberOfDays;
 	private int numberMaxStudentsByDay;
+	private int numberCurrentDay;
 	
 	public ManagerLibrary() {
 		super(10);
@@ -18,6 +19,7 @@ public class ManagerLibrary extends MyThread{
 		queueStudents = new ArrayList<Student>();
 		currentDayStudents = new ArrayList<Student>();
 		allStudents = new ArrayList<Student>();
+		numberCurrentDay = 0;
 	}
 	
 	public void playSimulation(int numberPCs, int maxTimeConsumption, int numberOfDays) {
@@ -136,10 +138,11 @@ public class ManagerLibrary extends MyThread{
 		for (Computer com : computers) {
 			com.setComputerState(defineStateInit());
 		}
+		numberCurrentDay++;
 	}
 
 	public int defineNumberOfStudents() {
-		return (int)(Math.random()*420)+300; 
+		return (int)(Math.random()*220)+200;
 	}
 	
 	@Override
@@ -169,5 +172,21 @@ public class ManagerLibrary extends MyThread{
 
 	public void setNumberMaxStudentsByDay(int numberMaxStudentsByDay) {
 		this.numberMaxStudentsByDay = numberMaxStudentsByDay;
+	}
+
+	public int getNumberCurrentDay() {
+		return numberCurrentDay;
+	}
+
+	public void setNumberCurrentDay(int numberCurrentDay) {
+		this.numberCurrentDay = numberCurrentDay;
+	}
+
+	public ArrayList<Student> getAllStudents() {
+		return allStudents;
+	}
+
+	public void setAllStudents(ArrayList<Student> allStudents) {
+		this.allStudents = allStudents;
 	}
 }
